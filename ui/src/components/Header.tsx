@@ -4,9 +4,13 @@ type TProps = {
   content: string;
 };
 
+const navbarStyles: React.CSSProperties = {
+  backgroundColor: "lightblue",
+};
+
 const Header: React.FC<TProps> = ({ content }) => {
   return (
-    <Navbar bg="light" data-bs-theme="light">
+    <Navbar data-bs-theme="light" style={navbarStyles}>
       <Container>
         <Navbar.Brand href="#home">{content}</Navbar.Brand>
       </Container>
