@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
+const unsplashApiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
+const unsplashApiUrl = process.env.REACT_APP_UNSPLASH_API_URL;
+
 const Search: React.FC = () => {
   const [word, setWord] = useState("");
 
-  const handleSearch = (event: React.FormEvent) => {
+  const handleSearch = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    console.log(word);
+    try {
+      const res = await fetch(
+        `${unsplashApiUrl}/photos/random?query=${word}&client_id=${unsplashApiKey}`
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
