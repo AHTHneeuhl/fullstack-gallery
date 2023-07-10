@@ -19,6 +19,8 @@ const Search: React.FC = () => {
     } catch (err) {
       console.error(err);
     }
+
+    setWord("");
   };
 
   return (
