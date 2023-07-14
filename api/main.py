@@ -1,4 +1,8 @@
+from requests import get
 from flask import Flask, request
+
+UNSPLASH_URL = "https://api.unsplash.com"
+UNSPLASH_KEY = ""
 
 app = Flask(__name__)
 
@@ -11,7 +15,12 @@ def hello():
 @app.route("/new-image")
 def new_image():
     word = request.args.get("query")
-    return {"word": word}
+
+    headers = {"Authorization": f"Client-ID {UNSPLASH_KEY}", "Accept-Version": "v1"}
+    params = {"query": word}
+
+    res = get(f"{UNSPLASH_URL}/photos/random", headers=headers, params=params)
+    return {"word": word, "data": res.json()}
 
 
 if __name__ == "__main__":
