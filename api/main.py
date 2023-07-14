@@ -7,8 +7,11 @@ load_dotenv(dotenv_path="./.env.local")
 
 unsplash_api_url = os.environ.get("UNSPLASH_API_URL", "")
 unsplash_api_key = os.environ.get("UNSPLASH_API_KEY", "")
+debug = os.environ.get("FLASK_DEBUG", True)
 
 app = Flask(__name__)
+
+app.config["DEBUG"] = debug
 
 
 @app.route("/")
