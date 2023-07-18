@@ -3,6 +3,7 @@ version: '3.8'
 services:
   ui:
     build: ./ui
+    restart: always
     ports:
       - 3000:3000
     volumes:
@@ -13,5 +14,8 @@ services:
 
   api:
     build: ./api
+    restart: always
     ports:
       - 5050:5050
+    volumes:
+      - ./api:/app
