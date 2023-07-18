@@ -5,6 +5,11 @@ services:
     build: ./ui
     ports:
       - 3000:3000
+    volumes:
+      - ./app/node_modules
+      - ./ui:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
   api:
     build: ./api
