@@ -31,9 +31,6 @@
       "plugin:prettier/recommended"
     ]
   },
-  "prettier": {
-    "singleQuote": false
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -47,8 +44,6 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^3.0.0"
   }
 }

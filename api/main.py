@@ -2,6 +2,7 @@ import os
 from requests import get
 from flask import Flask, request
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 load_dotenv(dotenv_path="./.env.local")
 
@@ -10,6 +11,7 @@ unsplash_api_key = os.environ.get("UNSPLASH_API_KEY", "")
 debug = os.environ.get("FLASK_DEBUG", True)
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["DEBUG"] = debug
 
