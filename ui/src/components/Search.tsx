@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
-const unsplashApiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
-const unsplashApiUrl = process.env.REACT_APP_UNSPLASH_API_URL;
+const backendApiUrl =
+  process.env.REACT_APP_BACKEND_URL || "http://localhost:5050";
 
 const Search: React.FC = () => {
   const [word, setWord] = useState("");
@@ -11,9 +11,7 @@ const Search: React.FC = () => {
     event.preventDefault();
 
     try {
-      const res = await fetch(
-        `${unsplashApiUrl}/photos/random?query=${word}&client_id=${unsplashApiKey}`
-      );
+      const res = await fetch(`${backendApiUrl}/new-image?query=${word}`);
       const data = await res.json();
       console.log(data);
     } catch (err) {
